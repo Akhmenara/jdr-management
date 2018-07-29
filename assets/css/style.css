@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #EDEDED;
+}
+
+.row h3{
+    text-decoration: underline;
+    text-align: center;
+}
+
+.player, .admin{
+    margin-top: 50px;
+}

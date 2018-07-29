@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 
     public function index() {
 
-        if(empty($this->session->userdata('id_user'))){
+        if(empty($this->session->userdata('user_id'))){
             $this->load->view('login');
         }else {
             redirect('/Rooms');
@@ -19,20 +19,17 @@ class Login extends CI_Controller {
 
     public function login() {
 
-        //log_message("error", var_export($name, TRUE));
-        $this->load->model('user_model');
+        $this->load->model('users_model');
         $name = $this->input->post('name');
 
-        $result = $this->user_model->user_login($name);
-        //log_message("error", var_export($result, TRUE));
+        $result = $this->users_model->user_login($name);
 
-        $this->session->set_userdata('id_user', $result[0]->us_id);
+        $this->session->set_userdata('user_id', $result[0]->us_id);
         redirect('/Rooms');
     }
 
     public function logout() {
-        //removing session
-        $this->session->unset_userdata('id_user');
+        $this->session->unset_userdata('user_id');
         redirect("Login");
     }
 

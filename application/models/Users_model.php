@@ -1,6 +1,6 @@
 <?php
 
-class User_model extends CI_Model {
+class Users_model extends CI_Model {
 
     protected $table = 'users';
 
@@ -30,4 +30,3 @@ class User_model extends CI_Model {
                     ->result();
     }
 }
-?>
