@@ -11,9 +11,14 @@ $(document).ready(function() {
         }
     });
 
-    $('.rooms-table tbody').on('click', 'button', function() {
+    $('#rooms-owned tbody').on('click', 'button', function() {
         var share_id = $(this).closest('tr').data('ref');
-        window.location = "<?= base_url(); ?>index.php/room/see/" + share_id;
+        window.location = "<?= base_url(); ?>index.php/room/manage/" + share_id;
+    });
+
+    $('#rooms-accessed tbody').on('click', 'button', function() {
+        var share_id = $(this).closest('tr').data('ref');
+        window.location = "<?= base_url(); ?>index.php/room/play/" + share_id;
     });
 });
 </script>

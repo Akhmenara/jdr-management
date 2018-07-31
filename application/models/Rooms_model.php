@@ -34,4 +34,23 @@ class Rooms_model extends CI_Model {
     public function create_room($room_name, $share_id, $admin_id) {
         return $this->db->insert('rooms', array('ro_name' => $room_name, 'ro_admin' => $admin_id, 'ro_share_id' => $share_id));
     }
+
+    public function get_room_details($share_id) {
+        return $this->db->select('*')->from('rooms')->where('ro_share_id', $share_id)->get()->row_array();
+    }
+
+    public function is_player($user_id, $share_id) {
+        $asso = $this->db->select('*')
+                ->from('us_room_asso')
+                ->join('rooms', 'us_room_asso.ro_id = rooms.ro_id')
+                ->where('us_id', $user_id)
+                ->where('ro_share_id', $share_id)
+                ->get()->result_array();
+        if(count($asso)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
