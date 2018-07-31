@@ -20,4 +20,29 @@ class Rooms extends CI_Controller {
         $this->load->view('rooms', $view);
         $this->load->view('footer');
     }
+
+    public function ajax_create_room() {
+
+        $room_name = $this->input->post('room_name');
+        $this->load->model('rooms_model');
+        $share_id = $this->generate_share_id();
+        while(count($this->rooms_model->share_id_exists($share_id)) > 0)
+        {
+            $share_id = $this->generate_share_id();
+        }
+        if (!empty($room_name)) {
+            $this->rooms_model->create_room($room_name, $share_id, $this->session->userdata('user_id'));
+        }
+        echo $share_id;
+    }
+
+    private function generate_share_id($length = 7) {
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

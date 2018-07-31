@@ -1,0 +1,1 @@
+L'ID de la salle est : <?= $share_id ?>
