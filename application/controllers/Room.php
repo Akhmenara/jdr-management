@@ -22,6 +22,7 @@ class Room extends CI_Controller {
             $view['has_rights'] = 1;
         }
 
+        $view['categories'] = $this->rooms_model->get_room_categories($share_id);
         $this->load->view('header');
         $this->load->view('room', $view);
         $this->load->view('footer');

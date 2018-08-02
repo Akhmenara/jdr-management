@@ -53,4 +53,28 @@ class Rooms_model extends CI_Model {
         }
     }
 
+    public function get_room_categories($share_id) {
+        $categories = $this->db->select('cat_id, cat_name')
+                        ->from('categories')
+                        ->join('rooms', 'cat_room = rooms.ro_id')
+                        ->where('ro_share_id', $share_id)
+                        ->get()->result_array();
+
+        foreach ($categories as $index => $category) {
+            $categories[$index]['messages'] = $this->db->select('messages.me_content')
+                            ->from('messages')
+                            ->where('me_category', $category['cat_id'])
+                            ->where('me_displayed', 1)
+                            ->get()->result_array();
+
+            $categories[$index]['images'] = $this->db->select('images.im_path')
+                            ->from('images')
+                            ->where('im_category', $category['cat_id'])
+                            ->where('im_displayed', 1)
+                            ->get()->result_array();
+        }
+
+        return $categories;
+    }
+
 }

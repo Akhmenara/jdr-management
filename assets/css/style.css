@@ -10,3 +10,15 @@
 .player, .admin{
     margin-top: 50px;
 }
+
+.nav-room .active{
+    background-color: #EDEDED;
+}
+
+.img-wrap>img {
+  display: block;
+  max-width:100%;
+  max-height:auto;
+  width: auto;
+  height: auto;
+}

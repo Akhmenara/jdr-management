@@ -7,7 +7,17 @@ $(document).ready(function() {
             "defaultContent": "<button class='btn btn-primary btn-md'>Entrer</button>"
         } ],
         "language": {
-          "emptyTable": "Pas de salles trouvées"
+            "emptyTable": "Pas de salles trouvées",
+            "info": "Affichage de la page _PAGE_ sur _PAGES_",
+            "paginate": {
+                "first":      "Début",
+                "last":       "Fin",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
+            "search": "Rechercher:",
+            "lengthMenu": "Afficher _MENU_ éléments",
+            "zeroRecords":    "Pas d'éléments correspondants"
         }
     });
 
