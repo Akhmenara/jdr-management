@@ -52,7 +52,7 @@
     <body>
         <div class="container">
     <div class="row">
-        <div class="col-md-offset-5 col-md-3">
+        <div class="col-md-offset-6 col-md-3">
             <div class="form-login">
             <h4>Bienvenue aventurier</h4>
             <form method="post" action="<?php echo site_url('Login/login'); ?>">
