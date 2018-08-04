@@ -36,15 +36,17 @@
                                 </div>
                                 <div id="collapse-<?= $category['cat_id'] ?>" class="panel-collapse collapse <?php if ($category['cat_id'] === '1') echo 'in'; ?>">
                                     <div class="panel-body">
-                                        <?php foreach ($category['messages'] as $message) { ?>
-                                            <p><?= $message['me_content'] ?></p>
-                                            <hr>
-                                        <?php } ?>
-                                        <?php foreach ($category['images'] as $image) { ?>
-                                            <div class="img-wrap">
-                                                <img src="/assets/images/<?= $image['im_path'] ?>"/>
+                                        <?php foreach ($category['content'] as $content) { ?>
+                                            <?php if($content['type'] === "message"){ ?>
+                                                <p><?= $content['me_content'] ?></p>
                                                 <hr>
-                                            </div>
+                                            <?php } ?>
+                                            <?php if($content['type'] === "image"){ ?>
+                                                <div class="img-wrap">
+                                                    <img src="/assets/images/<?= $content['im_path'] ?>"/>
+                                                    <hr>
+                                                </div>
+                                            <?php } ?>
                                         <?php } ?>
                                     </div>
                                 </div>
