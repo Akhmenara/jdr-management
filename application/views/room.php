@@ -37,13 +37,13 @@
                                 <div id="collapse-<?= $category['cat_id'] ?>" class="panel-collapse collapse <?php if ($category['cat_id'] === '1') echo 'in'; ?>">
                                     <div class="panel-body">
                                         <?php foreach ($category['content'] as $content) { ?>
-                                            <?php if($content['type'] === "message"){ ?>
-                                                <p><?= $content['me_content'] ?></p>
+                                            <?php if($content['co_type'] === "message"){ ?>
+                                                <p><?= $content['co_content'] ?></p>
                                                 <hr>
                                             <?php } ?>
-                                            <?php if($content['type'] === "image"){ ?>
+                                            <?php if($content['co_type'] === "image"){ ?>
                                                 <div class="img-wrap">
-                                                    <img src="/assets/images/<?= $content['im_path'] ?>"/>
+                                                    <img src="/assets/images/<?= $content['co_content'] ?>"/>
                                                     <hr>
                                                 </div>
                                             <?php } ?>

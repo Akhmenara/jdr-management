@@ -61,20 +61,14 @@ class Rooms_model extends CI_Model {
                         ->get()->result_array();
 
         foreach ($categories as $index => $category) {
-            $messages = $this->db->select('messages.me_content, me_order as order, "message" as type')
-                            ->from('messages')
-                            ->where('me_category', $category['cat_id'])
-                            ->where('me_displayed', 1)
+            $content = $this->db->select('content.co_content, co_order as order, co_type')
+                            ->from('content')
+                            ->where('co_category', $category['cat_id'])
+                            ->where('co_displayed', 1)
                             ->get()->result_array();
 
-            $images = $this->db->select('images.im_path, im_order as order, "image" as type')
-                            ->from('images')
-                            ->where('im_category', $category['cat_id'])
-                            ->where('im_displayed', 1)
-                            ->get()->result_array();
-            $merged = array_merge($messages, $images);
-            usort($merged, function($a, $b){return $a['order']-$b['order'];});
-            $categories[$index]['content'] = $merged;
+            usort($content, function($a, $b){return $a['order']-$b['order'];});
+            $categories[$index]['content'] = $content;
         }
 
         return $categories;
