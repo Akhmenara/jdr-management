@@ -3,10 +3,10 @@
     <head>
         <title>Login Page</title>
 
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="/assets/ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
         <script src="/assets/ext/jquery/js/jquery.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="/assets/ext/bootstrap/js/bootstrap.min.js"></script>
         <style>
             @import url(http://fonts.googleapis.com/css?family=Roboto:400);
             body {

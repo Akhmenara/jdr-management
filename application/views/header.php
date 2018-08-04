@@ -3,14 +3,14 @@
     <head>
         <title>JDR management</title>
 
-        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" id="bootstrap-css">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="/assets/ext/datatable/css/datatables.min.css" rel="stylesheet">
+        <link href="/assets/ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
         <script src="/assets/ext/jquery/js/jquery.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/assets/ext/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/assets/ext/datatable/js/datatables.min.js"></script>
+        <script src="/assets/ext/sweetalert/js/sweetalert.min.js"></script>
         <script src="/assets/js/script.js"></script>
     </head>
     <body>
