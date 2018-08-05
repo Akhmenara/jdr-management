@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 <div class="row admin">
     <div class="col-md-8 col-md-offset-2">
-        <h3>Liste de vos salles</h3>
+        <h3>Aventures que vous avez créé</h3>
         <table id="rooms-owned" class="display rooms-table" style="width:100%">
             <thead>
                 <tr>
