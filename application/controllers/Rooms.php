@@ -37,6 +37,26 @@ class Rooms extends CI_Controller {
         echo $share_id;
     }
 
+    public function ajax_check_room_exists(){
+        $this->load->model('rooms_model');
+        $room_share_id = $this->input->post('room_share_id');
+
+        $exists = $this->rooms_model->check_room_exists($room_share_id);
+
+        echo json_encode($exists);
+    }
+
+    public function ajax_join_room() {
+
+        $this->load->model('rooms_model');
+        $room_share_id = $this->input->post('room_share_id');
+        $player_name = $this->input->post('player_name');
+
+        $room_availability = $this->rooms_model->add_player($room_share_id, $this->session->userdata('user_id'), $player_name);
+
+        echo json_encode($room_availability);
+    }
+
     private function generate_share_id($length = 7) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);

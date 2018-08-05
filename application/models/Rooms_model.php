@@ -73,4 +73,38 @@ class Rooms_model extends CI_Model {
 
         return $categories;
     }
+
+    public function check_room_exists($room_share_id){
+        $room_exists = $this->db->select('ro_name')->from('rooms')->where('ro_share_id', $room_share_id)->get()->result_array();
+        log_message("error", var_export($room_exists, TRUE));
+        $exists = count($room_exists);
+        $name = count($room_exists)? $room_exists[0]['ro_name'] : '';
+        return array('exists' => $exists, 'name' => $name);
+    }
+
+    public function add_player($room_share_id, $user_id, $player_name){
+        $room_exists = $this->check_room_exists($room_share_id);
+
+        if(count($room_exists)){
+            $room_id = $this->db->select('ro_id')->from('rooms')->where('ro_share_id', $room_share_id)->get()->result_array()[0]['ro_id'];
+            $user_associated = $this->db->select('*')
+                                        ->from('us_room_asso')
+                                        ->where('us_id', $user_id)
+                                        ->where('ro_id', $room_id)
+                                        ->get()->result_array();
+            if(count($user_associated)){
+                $success = 'FAILURE';
+                $message = 'Vous appartenez déjà à cette salle.';
+            }else{
+                $to_insert = array('us_id' => $user_id, 'ro_id' => $room_id, 'us_displayed_name' => $player_name);
+                $this->db->insert('us_room_asso', $to_insert);
+                $success = 'SUCCESS';
+                $message = 'Vous avez bien été ajouté à cette aventure !';
+            }
+        }else {
+            $success = 'FAILURE';
+            $message = "Cette salle n'exite pas.";
+        }
+        return array('success' => $success, 'message' => $message);
+    }
 }
