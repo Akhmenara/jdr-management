@@ -16,7 +16,7 @@ $(document).ready(function () {
 
             room_id = share_id;
             $.ajax({method: "POST",
-                url: "Rooms/ajax_check_room_exists",
+                url: "/index.php/Rooms/ajax_check_room_exists",
                 data: { room_share_id: share_id }
             }).done(function(room_exists_json){
                 var room_exists = JSON.parse(room_exists_json);
@@ -39,7 +39,7 @@ $(document).ready(function () {
                             throw null;
 
                         $.ajax({method: "POST",
-                            url: "Rooms/ajax_join_room",
+                            url: "/index.php/Rooms/ajax_join_room",
                             data: { room_share_id: room_id, player_name: player_name }
                         }).done(function(success_json){
                             var success = JSON.parse(success_json);
@@ -80,7 +80,7 @@ $(document).ready(function () {
                 throw null;
 
             $.ajax({method: "POST",
-                url: "Rooms/ajax_create_room",
+                url: "/index.php/Rooms/ajax_create_room",
                 data: { room_name: name }
             }).done(function(share_id){
                 swal({
