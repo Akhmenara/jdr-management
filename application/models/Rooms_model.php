@@ -107,4 +107,31 @@ class Rooms_model extends CI_Model {
         }
         return array('success' => $success, 'message' => $message);
     }
+
+    public function get_room_users($share_id, $current_user){
+        $players = $this->db->select('users.us_id, users.us_name, us_displayed_name')
+                            ->from('us_room_asso')
+                            ->join('rooms', 'us_room_asso.ro_id = rooms.ro_id')
+                            ->join('users', 'us_room_asso.us_id = users.us_id')
+                            ->where('rooms.ro_share_id', $share_id)
+                            ->where("users.us_id != $current_user")
+                            ->get()->result_array();
+
+        $admin = $this->db->select('users.us_id, users.us_name, "GM" AS us_displayed_name')
+                            ->from('rooms')
+                            ->join('users', 'rooms.ro_admin = users.us_id')
+                            ->where('rooms.ro_share_id', $share_id)
+                            ->where("users.us_id != $current_user")
+                            ->get()->row_array();
+
+        if(count($admin)){
+            array_unshift($players, $admin);
+        }
+
+        return $players;
+    }
+
+    public function get_room_by_share_id($share_id){
+        return $this->db->select('ro_id')->from('rooms')->where('ro_share_id', $share_id)->get()->row_array()['ro_id'];
+    }
 }

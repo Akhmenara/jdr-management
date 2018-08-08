@@ -57,7 +57,7 @@
             </div>
             <div id="chat-content" class="col-xs-12 col-sm-9" hidden>
                 <div class="row">
-
+                    <?php include_once 'chat.php'; ?>
                 </div>
             </div>
             <div id="summary-content" class="col-xs-12 col-sm-9" hidden>

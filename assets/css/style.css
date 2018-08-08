@@ -15,10 +15,44 @@
     background-color: #EDEDED;
 }
 
+.nav{
+    border-right-style: solid;
+    border-right-color: darkgrey;
+}
+
 .img-wrap>img {
   display: block;
   max-width:100%;
   max-height:auto;
   width: auto;
   height: auto;
+}
+
+.nav-chat .active{
+    background-color: #EDEDED;
+}
+
+#chat-form{
+    width: 50%;
+    position: relative;
+    bottom: 0%;
+    max-height: 50px;
+}
+
+#chat-send{
+    text-align: center;
+    width: fit-content;
+}
+
+#chat-messages{
+    overflow-y: scroll;
+    height: 75vh;
+    max-height: 75vh;
+}
+
+.received{
+    text-align: right;
+}
+
+.sent{
 }

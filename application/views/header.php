@@ -21,9 +21,9 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="<?= base_url() ?>">Accueil</a></li>
-              <li><a href="#" id="create">Créer une salle</a></li>
-              <li><a href="#" id="join">Rejoindre une salle</a></li>
-              <li><a href="<?= base_url() ?>index.php/Login/logout">Déconnexion</a></li>
+                <li><a href="#" id="create">Créer une salle</a></li>
+                <li><a href="#" id="join">Rejoindre une salle</a></li>
+                <li><a href="<?= base_url() ?>index.php/Login/logout">Déconnexion</a></li>
             </ul>
           </div>
         </nav>
